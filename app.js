@@ -6,7 +6,12 @@ const ErrorHandler = require("./middlewares/errorMiddleware");
 const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
 const path = require("path");
+const cors = require("cors);
 
+const corsOptions = {
+  origin: 'https://ecomm-shopio.vercel.app', 
+  optionsSuccessStatus: 200
+};
 // Load environment variables
 if (process.env.NODE_ENV !== "PRODUCTION") {
   dotenv.config({
@@ -16,6 +21,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 
 // Middleware
 app.use(express.json());
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(fileUpload());
