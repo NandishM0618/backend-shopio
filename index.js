@@ -27,7 +27,7 @@ cloudinary.config({
 
 // Create server
 const server = app.listen(process.env.PORT, () => {
-  console.log(`Server is running on http://localhost:${process.env.PORT}`);
+  console.log(`Server is running on ${process.env.NODE_ENV === "PRODUCTION" ? process.env.PRODUCTION_API_DOMAIN : `http://localhost:${process.env.PORT || 5000}`}`);
 });
 
 // Handle unhandled promise rejections
